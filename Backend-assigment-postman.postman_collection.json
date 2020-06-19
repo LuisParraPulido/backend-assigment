@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "32cb333b-8431-4b7b-89df-c41c59b2e3e0",
+		"name": "Backend-assigment-postman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Reportar problema",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"problem\": \"bug\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Solucionar un problema",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"problemId\": \"5eec37a29650d21f3c934a76\",\r\n    \"answer\": \"fixed\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/agent/5eec397ae8b14e18eade924e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"agent",
+						"5eec397ae8b14e18eade924e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List agents",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/list?collection=agents",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"list"
+					],
+					"query": [
+						{
+							"key": "collection",
+							"value": "agents"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list problems",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/list?collection=problems",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"list"
+					],
+					"query": [
+						{
+							"key": "collection",
+							"value": "problems"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create free agent",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"lucas\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/agent",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"agent"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
