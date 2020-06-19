@@ -16,7 +16,7 @@ module.exports = (injectedStore) => {
       resolve: false,
     }
     const response = await store.report(problem);
-    const agent = await asignProblem(response.id);
+    const agent = await asignProblem(response._id);
     return response;
   };
 
@@ -33,7 +33,8 @@ module.exports = (injectedStore) => {
       throw new Error('There is not data');
     }
     const response = await store.resolve(body, agentId);
-    return response;
+    const message = `${response} fixed`
+    return message;
   };
 
   async function list(collection) {
@@ -43,10 +44,23 @@ module.exports = (injectedStore) => {
     const list = await store.list(collection);
     return list;
   }
+  async function create(data) {
+    if(!data.name) {
+      throw new Error('There is not data');
+    }
+    const newAgent = {
+      name: data.name,
+      free: true,
+      problemId: '',
+    }
+    const agent = await store.create(newAgent);
+    return agent;
+  }
 
   return {
     report,
     resolve,
     list,
+    create,
   };
 };

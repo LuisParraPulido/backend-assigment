@@ -37,7 +37,19 @@ function resolveProblem(req, res) {
       response.error(req, res, error.message, 500);
     });
 };
-  
+
+function createAgent(req, res) {
+  const agent = req.body;
+  Controller.create(agent)
+    .then((list) => {
+      response.success(req, res, list, 200);
+    })
+    .catch((error) => {
+      response.error(req, res, error.message, 500);
+    });
+}
+ 
+router.post('/agent', createAgent);
 router.get('/list', list);
 router.post('/user', reportProblem);
 router.post('/agent/:agentId', resolveProblem);
