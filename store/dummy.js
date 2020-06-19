@@ -1,20 +1,20 @@
 const db = {
   agents: [
     {
-      id: '1',
+      _id: '1',
       agent: '1',
       free: false,
       problemId: '1'
     },
     {
-      id: '2',
+      _id: '2',
       agent: '2',
       free: true,
     }
   ],
   problems: [
     {
-      id: '1',
+      _id: '1',
       info: 'bug',
       resolve: false,
     }
@@ -22,7 +22,7 @@ const db = {
 }
 
 async function report(problem) {
-  problem.id = '2';
+  problem._id = 2
   db['problems'].push(problem);
   return problem;
 }
@@ -34,22 +34,16 @@ async function asing(id) {
   return agent
 }
 
-async function resolve(answer, angetId) {
-  const agent = db['agents'].filter(agent => agent.id === angetId)
-  const problem = db['problems'].filter(problem => problem.id === answer.problemId)
-  agent[0].free = true;
-  agent[0].problemId = '';
-  problem[0].resolve = true;
-  problem[0].answer = answer.answer;
-  const response = {
-    problem,
-    agent
-  }
-  return response
+async function resolve(data, angetId) {
+  return data.problemId
 }
 
 async function list(data) {
   return db[data.collection] || [];
+}
+
+async function create(data) {
+  return data;
 }
 
 
@@ -58,4 +52,5 @@ module.exports = {
   asing,
   resolve,
   list,
+  create,
 };
